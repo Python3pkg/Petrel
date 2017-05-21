@@ -47,7 +47,7 @@ class TestTopology(unittest.TestCase):
         topology = builder.read(io_in)
         
         # Verify the topology settings were saved and loaded correctly.
-        self.assertEqual(['spout'], topology.spouts.keys())
+        self.assertEqual(['spout'], list(topology.spouts.keys()))
         self.assertEqual(['count', 'split'], sorted(topology.bolts.keys()))
 
         spout = topology.spouts['spout']

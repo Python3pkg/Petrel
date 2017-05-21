@@ -1,4 +1,4 @@
-from __future__ import print_function
+
 
 import io
 import os
@@ -157,7 +157,7 @@ petrel.host: %s
         if len(parallelism):
             raise ValueError(
                 'Parallelism settings error: There are no components named: %s' %
-                ','.join(parallelism.keys()))
+                ','.join(list(parallelism.keys())))
 
         # Build the Thrift topology object and serialize it to the .jar. Must do
         # this *after* the intercept step above since that step may modify the

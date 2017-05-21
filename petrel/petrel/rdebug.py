@@ -1,10 +1,10 @@
 ## {{{ http://code.activestate.com/recipes/576515/ (r2)
-from __future__ import print_function
+
 
 try: import readline  # For readline input support
 except: pass
 
-import sys, os, traceback, signal, codeop, cPickle, tempfile
+import sys, os, traceback, signal, codeop, pickle, tempfile
 
 import six
 
@@ -40,7 +40,7 @@ class NamedPipe(object):
         
     def put(self,msg):
         if self.is_open():
-            data = cPickle.dumps(msg,1)
+            data = pickle.dumps(msg,1)
             self.out.write("%d\n" % len(data))
             self.out.write(data)
             self.out.flush()
@@ -55,7 +55,7 @@ class NamedPipe(object):
             l = int(txt)
             data=self.inp.read(l)
             if len(data) < l: self.inp.close()
-            return cPickle.loads(data)  # Convert back to python object.
+            return pickle.loads(data)  # Convert back to python object.
             
     def close(self):
         self.inp.close()
@@ -128,7 +128,7 @@ def debug_process(pid):
     pipe = NamedPipe(pipename(pid), 1)
     try:
         while pipe.is_open():
-            txt=raw_input(pipe.get()) + '\n'
+            txt=input(pipe.get()) + '\n'
             pipe.put(txt)
     except EOFError:
         pass # Exit.

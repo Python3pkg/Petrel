@@ -1,5 +1,5 @@
 # Based on this code: http://tutorials.github.com/pages/retrieving-storm-data-from-nimbus.html
-from __future__ import print_function
+
 
 import datetime
 

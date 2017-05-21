@@ -5,9 +5,7 @@ import sys
 from petrel import storm
 
 
-class EmitterBase(object):
-    __metaclass__ = ABCMeta
-
+class EmitterBase(object, metaclass=ABCMeta):
     DEFAULT_PYTHON = 'python%d.%d' % (sys.version_info.major, sys.version_info.minor)
 
     def __init__(self, script):
@@ -33,13 +31,13 @@ class EmitterBase(object):
             return None
 
 
-class Spout(EmitterBase, storm.Spout):
-    __metaclass__ = ABCMeta
+class Spout(EmitterBase, storm.Spout, metaclass=ABCMeta):
+    pass
 
 
-class BasicBolt(EmitterBase, storm.BasicBolt):
-    __metaclass__ = ABCMeta
+class BasicBolt(EmitterBase, storm.BasicBolt, metaclass=ABCMeta):
+    pass
 
 
-class Bolt(EmitterBase, storm.Bolt):
-    __metaclass__ = ABCMeta
+class Bolt(EmitterBase, storm.Bolt, metaclass=ABCMeta):
+    pass

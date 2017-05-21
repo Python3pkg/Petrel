@@ -1,6 +1,6 @@
 from collections import deque, defaultdict, namedtuple
 
-import storm
+from . import storm
 
 python_id = id
 

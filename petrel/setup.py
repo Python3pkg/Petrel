@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from __future__ import print_function
+
 
 import os
 import re
@@ -9,7 +9,7 @@ import sys
 
 from setuptools import setup, find_packages
 if sys.version_info.major == 2:
-    from urllib2 import urlopen
+    from urllib.request import urlopen
 else:
     from urllib.request import urlopen
 
